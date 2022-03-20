@@ -23,7 +23,7 @@
                     <label class="layui-form-label">${comment}：</label>
                     <div class="layui-input-inline">
                         <select name="${javaField}" #if($column.required) lay-required#end
-#if("" !=$column.dictType)dict-code="${column.dictType}" #end>
+#if("" !=$column.dictType) dict-code="${column.dictType}" #end>
                             <option value="">所有</option>
                         </select>
                     </div>
