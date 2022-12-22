@@ -1,9 +1,7 @@
 package com.pearadmin.system.service.impl;
 
 import com.pearadmin.common.plugin.logging.aop.enums.LoggingType;
-import com.pearadmin.common.plugin.logging.aop.enums.RequestMethod;
 import com.pearadmin.common.tools.SecurityUtil;
-import com.pearadmin.common.tools.ServletUtil;
 import com.pearadmin.system.domain.SysLog;
 import com.pearadmin.system.domain.SysUser;
 import com.pearadmin.system.mapper.SysLogMapper;
@@ -27,16 +25,9 @@ public class SysLogServiceImpl implements ISysLogService {
 
     @Override
     public boolean save(SysLog sysLog) {
-        sysLog.setOperateAddress(ServletUtil.getRemoteHost());
-        sysLog.setMethod(ServletUtil.getRequestURI());
-        sysLog.setCreateTime(LocalDateTime.now());
-        sysLog.setRequestMethod(RequestMethod.valueOf(ServletUtil.getMethod()));
-        sysLog.setOperateUrl(ServletUtil.getRequestURI());
-        sysLog.setBrowser(ServletUtil.getBrowser());
-        sysLog.setRequestBody(ServletUtil.getQueryParam());
-        sysLog.setSystemOs(ServletUtil.getSystem());
         SysUser currentUser = SecurityUtil.currentUser();
         sysLog.setOperateName(null != currentUser ? currentUser.getUsername() : "未登录用户");
+        sysLog.setCreateTime(LocalDateTime.now());
         int result = sysLogMapper.insert(sysLog);
         return result > 0;
     }
