@@ -2,8 +2,10 @@ package com.pearadmin.common.plugin.logging.aop;
 
 import com.pearadmin.common.plugin.logging.aop.annotation.Logging;
 import com.pearadmin.common.plugin.logging.aop.enums.LoggingType;
+import com.pearadmin.common.plugin.logging.aop.enums.RequestMethod;
 import com.pearadmin.common.plugin.logging.async.LoggingFactory;
 import com.pearadmin.common.tools.SequenceUtil;
+import com.pearadmin.common.tools.ServletUtil;
 import com.pearadmin.system.domain.SysLog;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -48,12 +50,21 @@ public class LoggingAspect {
             sysLog.setTitle(loggingAnnotation.title());
             sysLog.setDescription(loggingAnnotation.describe());
             sysLog.setBusinessType(loggingAnnotation.type());
-            sysLog.setSuccess(true);
             sysLog.setLoggingType(LoggingType.OPERATE);
+
+            sysLog.setOperateAddress(ServletUtil.getRemoteHost());
+            sysLog.setMethod(ServletUtil.getRequestURI());
+            sysLog.setRequestMethod(RequestMethod.valueOf(ServletUtil.getMethod()));
+            sysLog.setOperateUrl(ServletUtil.getRequestURI());
+            sysLog.setBrowser(ServletUtil.getBrowser());
+            sysLog.setRequestBody(ServletUtil.getQueryParam());
+            sysLog.setSystemOs(ServletUtil.getSystem());
+
+            sysLog.setSuccess(true);
             result = joinPoint.proceed();
         } catch (Exception exception) {
-            sysLog.setSuccess(false);
             sysLog.setErrorMsg(exception.getMessage());
+            sysLog.setSuccess(false);
             throw exception;
         } finally {
             loggingFactory.record(sysLog);
