@@ -36,7 +36,7 @@
         <!-- Swagger 版 本 -->
         <swagger.version>2.9.2</swagger.version>
         <!-- Fast Json 序 列 化 版 本 -->
-        <fastjson.version>1.2.78</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <!-- Lombok 版 本 -->
         <lombok.version>1.18.20</lombok.version>
         <!-- apache 工 具 类 -->
