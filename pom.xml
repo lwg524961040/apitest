@@ -68,7 +68,7 @@
         <!-- HuTool 工 具 类 -->
         <hutool.version>5.7.16</hutool.version>
         <!-- Xss 工 具 类 -->
-        <jsoup.version>1.9.2</jsoup.version>
+        <jsoup.version>1.15.3</jsoup.version>
         <!-- 系 统 工 具 -->
         <oshi.version>5.7.0</oshi.version>
         <!-- 网 路 工 具 -->
