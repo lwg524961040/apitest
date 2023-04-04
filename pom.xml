@@ -73,6 +73,8 @@
         <oshi.version>5.7.0</oshi.version>
         <!-- 网 路 工 具 -->
         <commons.net.version>3.8.0</commons.net.version>
+		<!-- XSS安全过滤 -->
+        <coverity.security.version>1.1.1</coverity.security.version>
         <!-- Maven 配 置 编 译 JDK 版 本-->
         <maven.compiler.target>8</maven.compiler.target>
         <maven.compiler.source>8</maven.compiler.source>
@@ -271,6 +273,12 @@
                 <version>${commons.net.version}</version>
                 <scope>compile</scope>
             </dependency>
+			<!-- XSS安全过滤 -->
+			<dependency>
+				<groupId>com.coverity.security</groupId>
+				<artifactId>coverity-escapers</artifactId>
+				<version>${coverity.security.version}</version>
+			</dependency>
         </dependencies>
     </dependencyManagement>
 
