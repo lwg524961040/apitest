@@ -8,6 +8,7 @@ import com.pearadmin.system.mapper.SysNoticeMapper;
 import com.pearadmin.system.service.ISysNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.coverity.security.Escape;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -42,7 +43,14 @@ public class SysNoticeServiceImpl implements ISysNoticeService {
      */
     @Override
     public List<SysNotice> selectSysNoticeList(SysNotice sysNotice) {
-        return sysNoticeMapper.selectSysNoticeList(sysNotice);
+        List<SysNotice> sysNoticeList = sysNoticeMapper.selectSysNoticeList(sysNotice);
+        for (SysNotice notice : sysNoticeList) {
+            String escapedTitle = Escape.html(notice.getTitle());
+            String escapedContent = Escape.html(notice.getContent());
+            notice.setTitle(escapedTitle);
+            notice.setContent(escapedContent);
+        }
+        return sysNoticeList;
     }
 
     /**
