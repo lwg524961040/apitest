@@ -42,7 +42,11 @@ public class SecureUserDetailsServiceImpl implements UserDetailsService {
         if (sysUser == null) {
             throw new UsernameNotFoundException("Account Not Found");
         }
+
+        //可以用于确定 菜单 按钮权限
         List<SysPower> powerList = sysPowerMapper.selectByUsername(username);
+
+        //这里替换成sysGdcbigroup的 list 可以存放group 中的 obj(这个可以参考 @TableField(exist = false) 的设计 放到group对象中)  和user在group中的role
         List<SysRole> roleList = sysRoleMapper.selectByUsername(username);
         sysUser.setPowerList(powerList);
         sysUser.setRoles(roleList);
