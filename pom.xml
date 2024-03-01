@@ -310,7 +310,7 @@
         <dependency>
             <groupId>com.github.alenfive</groupId>
             <artifactId>rocket-api-boot-starter</artifactId>
-            <version>2.4.3.RELEASE</version>
+            <version>2.4.6.RELEASE</version>
         </dependency>
 
 

@@ -20,15 +20,15 @@ public class DefaultDataSourceManager extends DataSourceManager {
 
     @Autowired
     private DataSource dataSource;
-
-
+    @Resource
+    private PlatformTransactionManager platformTransactionManager;
 
     @PostConstruct
     public void init() {
 
         Map<String, DataSourceDialect> dialects = new HashMap();
         //通过MysqlDataSource的第二个参数为`true`来表示生成的API信息所存储的库，有且仅有一个为true
-        dialects.put("mysql",new MySQLDataSource(dataSource,true));
+        dialects.put("mysql",new MySQLDataSource(platformTransactionManager,true));
         super.setDialectMap(dialects);
     }
 
