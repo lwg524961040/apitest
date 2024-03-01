@@ -28,6 +28,11 @@ spring:
     # 是 否 检 查 流 程 定 义 文 件
     check-process-definitions: false
 
+  # data api
+  rocket-api:
+    service-title: Data API     #用于UI title显示
+    service-name: DOP             #用于数据库数据隔离
+
 # 内 置 组 件
 pear:
   # Document 配 置 信 息
@@ -113,3 +118,10 @@ mybatis-plus:
   configuration:
     ## 日志实现
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+
+
+
+
+
