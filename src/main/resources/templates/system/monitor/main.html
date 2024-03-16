@@ -11,31 +11,31 @@
             <div class="layui-col-md6">
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        主机信息
+                        CPU monitoring
                     </div>
                     <div class="layui-card-body">
                         <div class="layui-row layui-col-space10">
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
-                                    <div class="title">核心数</div>
+                                    <div class="title">Core</div>
                                     <div class="count pear-text" th:text="${cpu.cpuNum}">21</div>
                                 </div>
                             </div>
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
-                                    <div class="title">空闲率</div>
+                                    <div class="title">Idleness rate</div>
                                     <div class="count pear-text" th:text="${cpu.free + '%'}">32</div>
                                 </div>
                             </div>
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
-                                    <div class="title">等待率</div>
+                                    <div class="title">Waiting rate</div>
                                     <div class="count pear-text" th:text="${cpu.wait + '%'}"></div>
                                 </div>
                             </div>
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
-                                    <div class="title">使用率</div>
+                                    <div class="title">Utilization rate</div>
                                     <div class="count pear-text" th:text="${cpu.used + '%'}"></div>
                                 </div>
                             </div>
@@ -46,31 +46,31 @@
             <div class="layui-col-md6">
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        内存监控
+                        Memory monitoring
                     </div>
                     <div class="layui-card-body">
                         <div class="layui-row layui-col-space10">
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
-                                    <div class="title">空闲内存</div>
+                                    <div class="title">Available memory</div>
                                     <div class="count pear-text" th:text="${cpu.memInfo.free + 'G'}"></div>
                                 </div>
                             </div>
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
-                                    <div class="title">最大内存</div>
+                                    <div class="title">Maximum memory</div>
                                     <div class="count pear-text" th:text="${cpu.memInfo.total + 'G'}"></div>
                                 </div>
                             </div>
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
-                                    <div class="title">已用内存</div>
+                                    <div class="title">Used memory</div>
                                     <div class="count pear-text" th:text="${cpu.memInfo.used + 'G'}"></div>
                                 </div>
                             </div>
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
-                                    <div class="title">内存使用</div>
+                                    <div class="title">Utilization rate</div>
                                     <div class="count pear-text"
                                          th:text="${#numbers.formatDecimal(cpu.memInfo.used / cpu.memInfo.total * 100, 2, 2)+ '%'}"></div>
                                 </div>
@@ -81,7 +81,7 @@
             </div>
             <div class="layui-col-md12">
                 <div class="layui-card">
-                    <div class="layui-card-header">访客流量</div>
+                    <div class="layui-card-header">User access</div>
                     <div class="layui-card-body">
                         <div class="layui-tab custom-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                             <div id="echarts-records" style="background-color:#ffffff;min-height:400px;"></div>
@@ -93,47 +93,47 @@
     </div>
     <div class="layui-col-md4">
         <div class="layui-card">
-            <div class="layui-card-header">磁盘信息</div>
+            <div class="layui-card-header">Disk information</div>
             <div class="layui-card-body">
                 <ul class="pear-card-status">
                     <li th:each="sysFile:${cpu.sysFiles}">
                         <p th:text="${sysFile.typeName}"></p>
-                        磁盘大小&nbsp;<span th:text="${sysFile.total}"></span>&nbsp;&nbsp;
-                        空闲大小&nbsp;<span th:text="${sysFile.free}"></span>&nbsp;&nbsp;
+                        Disk size&nbsp;<span th:text="${sysFile.total}"></span>&nbsp;&nbsp;
+                        Free size&nbsp;<span th:text="${sysFile.free}"></span>&nbsp;&nbsp;
                         <br/>
                         <br/>
-                        已经使用&nbsp;<span th:text="${sysFile.used}"></span>&nbsp;&nbsp;
-                        使用概率&nbsp;<span th:text="${sysFile.usage + '%'}"></span>
+                        Used size&nbsp;<span th:text="${sysFile.used}"></span>&nbsp;&nbsp;
+                        Utilization rate&nbsp;<span th:text="${sysFile.usage + '%'}"></span>
                         <br/>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="layui-card">
-            <div class="layui-card-header">主机信息</div>
+            <div class="layui-card-header">Server information</div>
             <div class="layui-card-body">
                 <table class="layui-table" lay-skin="line">
                     <thead>
                     <tr>
-                        <th>属性</th>
-                        <th>值</th>
+                        <th>Attributes</th>
+                        <th>Values</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>名称</td>
+                        <td>Host name</td>
                         <td th:text="${cpu.sysInfoComputerName}"></td>
                     </tr>
                     <tr>
-                        <td>地址</td>
+                        <td>Ip address</td>
                         <td th:text="${cpu.sysInfoComputerIp}"></td>
                     </tr>
                     <tr>
-                        <td>系统</td>
+                        <td>OS</td>
                         <td th:text="${cpu.sysInfoOsName}"></td>
                     </tr>
                     <tr>
-                        <td>模型</td>
+                        <td>CPU type</td>
                         <td th:text="${cpu.sysInfoOsArch}"></td>
                     </tr>
                     <tr>
@@ -251,7 +251,7 @@
 					                <span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${color[v.componentIndex]};"></span>
 					                ${v.seriesName}.${v.name}
 					                <span style="color:${color[v.componentIndex]};font-weight:700;font-size: 18px">${v.value}</span>
-					                人`;
+					                `;
                     })
 
 
@@ -275,7 +275,7 @@
                 type: "category",
                 boundaryGap: false,
                 axisLabel: {
-                    formatter: '{value}月',
+                    formatter: '{value}',
                     textStyle: {
                         color: "#333"
                     }
@@ -289,7 +289,7 @@
             }],
             yAxis: [{
                 type: "value",
-                name: '单位：人',
+                name: 'Unit:person',
                 axisLabel: {
                     textStyle: {
                         color: "#666"
@@ -314,7 +314,7 @@
                 }
             }],
             series: [{
-                name: "2018",
+                name: "2023",
                 type: "line",
                 smooth: true,
                 symbolSize: 8,
@@ -351,7 +351,7 @@
                 },
                 data: yAxisData1
             }, {
-                name: "2019",
+                name: "2024",
                 type: "line",
                 smooth: true,
                 symbolSize: 8,
