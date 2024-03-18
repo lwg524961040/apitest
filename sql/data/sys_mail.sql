@@ -1,0 +1,3 @@
+INSERT INTO `sys_mail` (`mail_id`, `receiver`, `subject`, `content`, `create_by`, `create_time`) VALUES ('1349598576807772160', '1218600762@qq.com', 'macbook pro', '13.3寸\nm1处理器\n16G内存', 'admin', '2021-01-14 06:06:23');
+INSERT INTO `sys_mail` (`mail_id`, `receiver`, `subject`, `content`, `create_by`, `create_time`) VALUES ('1357215518368464896', 'BoscoKuo@aliyun.com', '湖人总冠军', '湖人总冠军', 'admin', '2021-02-04 06:33:36');
+INSERT INTO `sys_mail` (`mail_id`, `receiver`, `subject`, `content`, `create_by`, `create_time`) VALUES ('1357219037586653184', 'BoscoKuo@aliyun.com', 'LebronJames', 'Lakers', 'admin', '2021-02-04 06:47:35');
